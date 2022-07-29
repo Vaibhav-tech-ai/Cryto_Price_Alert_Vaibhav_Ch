@@ -1,5 +1,5 @@
 # Kryto_Task_Vaibhav_Ch
-Basically there are 4 endpoints.
+Basically there are 3 endpoints.
 
 The first one being a create endpoint here the user could create an alert by his username and by inputting the crypto name and the price for which he is creating an alert. As soon as the values are entered the record in stored in the MongoDB. There are two tables one being the users and the other being the Alerts which stores everything along with the status. As soon as the create API is called first the user is added in the Users table and then the values are added in the Alerts table. One thing to be noticed is as soon as the create api is called the status is updated as created and pushed in the DB.
 
