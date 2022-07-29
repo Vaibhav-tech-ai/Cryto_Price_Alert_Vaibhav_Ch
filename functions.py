@@ -27,6 +27,10 @@ def doCreate(uname, name, price, crypto,status):
 
     # print(result)
 
+def searchDb(uname):
+    result=users_collection.find_one(uname)
+    
+
 def doDelete(uname,crypto,price):
     filter = {
         "uname": uname,
@@ -36,5 +40,24 @@ def doDelete(uname,crypto,price):
     new_value = {"$set":{"status": "deleted"}}
     document = alert_collection.update_one(filter, new_value)
     return 1
+
+def doFetch(uname,status):
+    if status!=None:
+        filter = {
+            "uname": uname,
+            "status": status
+        }
+    else:
+        filter = {
+            "uname": uname
+        }
+    
+    document = alert_collection.find(filter)
+    result = []
+    for x in document:
+        del x["_id"]
+        result.append(x)
+    print(result)
+    return result
 
 #print(create("vaibhav",20000,"BTC"))
